@@ -35,20 +35,19 @@ uploaded_pdf = st.file_uploader("Load a pdf", type=['.pdf', '.docx'])
 if uploaded_pdf is not None:
   if uploaded_pdf.type not in ['.pdf', '.docx']:
     st.error("Please upload a valid PDF file.")
-    continue  # Move continue here
-  
-  status = st.text_input("Status", "", key="status")
-  text = load_doc(uploaded_pdf)
-  if text is not None:
-    status.value = "Document loaded successfully!"
   else:
-    status.value = "Error loading document."
-
-  query = st.text_input("type in your question")
-  output = st.text_area("output", "", height=100)
-
-  if st.button("submit"):
+    status = st.text_input("Status", "", key="status")
+    text = load_doc(uploaded_pdf)
     if text is not None:
-      output.value = answer_query(query, text)
+      status.value = "Document loaded successfully!"
     else:
-      st.error("Please load a valid PDF document before asking questions.")
+      status.value = "Error loading document."
+
+    query = st.text_input("type in your question")
+    output = st.text_area("output", "", height=100)
+
+    if st.button("submit"):
+      if text is not None:
+        output.value = answer_query(query, text)
+      else:
+        st.error("Please load a valid PDF document before asking questions.")
