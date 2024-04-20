@@ -38,6 +38,6 @@ css = """container{max-width:700px; margin-left:auto; margin-right:auto,padding:
 
 
 
-        submit_query.click(answer_query,input,output)
+    
 
 demo.launch()
