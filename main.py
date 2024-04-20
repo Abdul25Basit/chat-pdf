@@ -9,8 +9,9 @@ def install_pyPDF2():
 install_pyPDF2()
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.llms import BasicLM  # Replace with a smaller LLM (explained later)
-from langchain.chains import QASequential
+# Consider alternative libraries like NLTK or spaCy for simpler text processing
+# from langchain.llms import BasicLM  # Replace with a smaller LLM (if needed)
+from langchain.chains import QASequential  # Consider a simpler approach if LLMs are not feasible
 
 def load_doc(pdf_doc):
   """Loads the text content from the uploaded PDF file."""
