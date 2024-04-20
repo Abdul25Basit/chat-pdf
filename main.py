@@ -56,7 +56,7 @@ uploaded_pdf = st.file_uploader("Load a pdf", type=['.pdf', '.docx'])
 if uploaded_pdf is not None:
   if uploaded_pdf.type not in ['.pdf', '.docx']:
     st.error("Please upload a valid PDF file.")
-    continue
+    continue  # Move continue here
   
   status = st.text_input("Status", "", key="status")
   text = load_doc(uploaded_pdf)  # Call load_doc function
