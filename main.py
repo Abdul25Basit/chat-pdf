@@ -37,7 +37,6 @@ css = """container{max-width:700px; margin-left:auto; margin-right:auto,padding:
 
 
 
-        load_pdf.click(load_doc,inputs=pdf_doc,outputs=status)
 
         submit_query.click(answer_query,input,output)
 
