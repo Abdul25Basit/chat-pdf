@@ -1,5 +1,12 @@
 import streamlit as st
-import PyPDF2
+
+@st.cache(allow_output_mutation=True)
+def install_pyPDF2():
+  """Installs PyPDF2 library if not already present."""
+  import subprocess
+  subprocess.run(["pip", "install", "PyPDF2"])
+
+install_pyPDF2()
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.llms import BasicLM  # Replace with a smaller LLM (explained later)
