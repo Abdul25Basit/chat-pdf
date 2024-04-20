@@ -1,4 +1,4 @@
-
+import gradio as gr
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.llms import HuggingFaceHub
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -34,10 +34,23 @@ html = """
     Once the document has been loaded you can begin chatting with the PDF =)
 </div>"""
 css = """container{max-width:700px; margin-left:auto; margin-right:auto,padding:20px}"""
+with gr.Blocks(css=css,theme=gr.themes.Monochrome()) as demo:
+    gr.HTML(html)
+    with gr.Column():
+        gr.Markdown('ChatPDF')
+        pdf_doc = gr.File(label="Load a pdf",file_types=['.pdf','.docx'],type='filepath')
+        with gr.Row():
+            load_pdf = gr.Button('Load pdf file')
+            status = gr.Textbox(label="Status",placeholder='',interactive=False)
 
 
+        with gr.Row():
+            input = gr.Textbox(label="type in your question")
+            output = gr.Textbox(label="output")
+        submit_query = gr.Button("submit")
 
+        load_pdf.click(load_doc,inputs=pdf_doc,outputs=status)
 
-    
+        submit_query.click(answer_query,input,output)
 
-
+demo.launch()
