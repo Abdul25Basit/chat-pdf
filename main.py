@@ -35,19 +35,7 @@ html = """
 </div>"""
 css = """container{max-width:700px; margin-left:auto; margin-right:auto,padding:20px}"""
 
-    gr.HTML(html)
-    with gr.Column():
-        gr.Markdown('ChatPDF')
-        pdf_doc = gr.File(label="Load a pdf",file_types=['.pdf','.docx'],type='filepath')
-        with gr.Row():
-            load_pdf = gr.Button('Load pdf file')
-            status = gr.Textbox(label="Status",placeholder='',interactive=False)
 
-
-        with gr.Row():
-            input = gr.Textbox(label="type in your question")
-            output = gr.Textbox(label="output")
-        submit_query = gr.Button("submit")
 
         load_pdf.click(load_doc,inputs=pdf_doc,outputs=status)
 
