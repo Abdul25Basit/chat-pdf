@@ -34,7 +34,7 @@ html = """
     Once the document has been loaded you can begin chatting with the PDF =)
 </div>"""
 css = """container{max-width:700px; margin-left:auto; margin-right:auto,padding:20px}"""
-with gr.Blocks(css=css,theme=gr.themes.Monochrome()) as demo:
+
     gr.HTML(html)
     with gr.Column():
         gr.Markdown('ChatPDF')
